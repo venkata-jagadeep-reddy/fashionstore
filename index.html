@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Designing Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product-card {
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .banner {
+            background: linear-gradient(to right, #ff7e5f, #feb47b), url('https://via.placeholder.com/1200x300') no-repeat center center;
+            background-size: cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff7e5f;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+        }
+        .btn-primary {
+            background-color: #ff7e5f;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #feb47b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Fashion Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#offers">Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        Welcome to the Fashion Designing Store
+    </div>
+
+    <!-- About Us -->
+    <div class="container mt-5" id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="text-center">At Fashion Designing Store, we believe in redefining style and elegance. Our store is a one-stop destination for fashion enthusiasts looking for the latest trends and timeless classics. With a wide range of premium-quality clothing including shirts, pants, sarees, dresses, and more, we ensure there's something for everyone. Our dedicated team curates each collection to offer our customers a seamless shopping experience. Visit us to explore the perfect blend of comfort, quality, and sophistication.</p>
+    </div>
+
+    <!-- Offers Section -->
+    <div class="container mt-5" id="offers">
+        <h2 class="section-title">Special Offers</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card product-card">
+                    <img src="offer 1.jpg" class="card-img-top" alt="Offer 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Buy 2 Get 1 Free</h5>
+                        <p class="card-text">Grab our amazing offer on selected items!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card product-card">
+                    <img src="offer 2.jpg" class="card-img-top" alt="Offer 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Flat 50% Off</h5>
+                        <p class="card-text">Don't miss out on our special discount.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card product-card">
+                    <img src="offer 3.jpg" class="card-img-top" alt="Offer 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Exclusive Festival Offers</h5>
+                        <p class="card-text">Celebrate the season with great deals!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Collection -->
+    <div class="container mt-5">
+        <h1 class="section-title">Our Collection</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Shirts -->
+            <div class="col">
+                <div class="card product-card">
+                    <img src="mens.jpg" class="card-img-top" alt="Shirts">
+                    <div class="card-body">
+                        <h5 class="card-title">Mens</h5>
+                        <button class="btn btn-primary" onclick="redirectToPage('shirts.html')">View more</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Pants -->
+            <div class="col">
+                <div class="card product-card">
+                    <img src="womens.jpg" class="card-img-top" alt="Pants">
+                    <div class="card-body">
+                        <h5 class="card-title">Womens</h5>
+                        <button class="btn btn-primary" onclick="redirectToPage('pants.html')">View more</button>
+                    </div>
+                </div>
+            </div>
+            <!-- child -->
+            <div class="col">
+                <div class="card product-card">
+                    <img src="child.jpg" class="card-img-top" alt="Pants">
+                    <div class="card-body">
+                        <h5 class="card-title">Child</h5>
+                        <button class="btn btn-primary" onclick="redirectToPage('pants.html')">View more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2024 Fashion Designing Store. All rights reserved.</p>
+        <p>Contact us at: <br>Email: 1si23cs045@sit.ac.in <br>Phone: +91 9381850234</p>
+        <p>Address: Siddaganga institute of technology,Tumkur.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

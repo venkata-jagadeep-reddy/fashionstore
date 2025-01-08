@@ -17,15 +17,8 @@
             transform: scale(1.05);
         }
         .banner {
-            background: linear-gradient(to right, #ff7e5f, #feb47b), url('https://via.placeholder.com/1200x300') no-repeat center center;
-            background-size: cover;
             height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: bold;
+            margin-bottom: 20px;
         }
         .navbar-brand {
             font-weight: bold;
@@ -91,50 +84,184 @@
         </div>
     </nav>
 
-    <!-- Banner -->
-    <div class="banner">
-        Welcome to the Fashion Designing Store
+    <!-- Banner with Carousel -->
+    <div id="bannerCarousel" class="carousel slide banner" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="50off.jpg" class="d-block w-100" alt="Slide 1" width="1200px" height="380px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><mark>Welcome to Fashion Designing Store</mark></h5>
+                    <p><mark>Redefining Style and Elegance</mark></p>
+                </div>
+            </div>
+            <div class="carousel-item" onclick="redirectToPage('offer.html')">
+                <img src="ex-banner.jpg" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><mark>Exclusive Collections</mark></h5>
+                    <p><mark>Discover the Latest Trends</mark></p>
+                </div>
+            </div>
+            <div class="carousel-item" onclick="redirectToPage('offer.html')">
+                <img src="spl.jpg" class="d-block w-100" alt="Slide 3" width="1200px" height="380px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><mark>Special Offers</mark></h5>
+                    <p><mark>Unmissable Deals Await</mark></p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
     <!-- About Us -->
-    <div class="container mt-5" id="about">
-        <h2 class="section-title">About Us</h2>
-        <p class="text-center">At Fashion Designing Store, we believe in redefining style and elegance. Our store is a one-stop destination for fashion enthusiasts looking for the latest trends and timeless classics. With a wide range of premium-quality clothing including shirts, pants, sarees, dresses, and more, we ensure there's something for everyone. Our dedicated team curates each collection to offer our customers a seamless shopping experience. Visit us to explore the perfect blend of comfort, quality, and sophistication.</p>
-    </div>
-
-    <!-- Offers Section -->
-    <div class="container mt-5" id="offers">
-        <h2 class="section-title">Special Offers</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card product-card">
-                    <img src="offer 1.jpg" class="card-img-top" alt="Offer 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Buy 2 Get 1 Free</h5>
-                        <p class="card-text">Grab our amazing offer on selected items!</p>
-                    </div>
+    <!-- About Us with Accordion -->
+    <h2 class="section-title">About Us</h2>
+<div class="container mt-5" id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="accordion" id="aboutAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Our Mission
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#aboutAccordion">
+                <div class="accordion-body">
+                    At Fashion Designing Store, our mission is to redefine style and elegance. We aim to provide premium-quality clothing while keeping customer satisfaction our top priority.
                 </div>
             </div>
-            <div class="col">
-                <div class="card product-card">
-                    <img src="offer 2.jpg" class="card-img-top" alt="Offer 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Flat 50% Off</h5>
-                        <p class="card-text">Don't miss out on our special discount.</p>
-                    </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Our Vision
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#aboutAccordion">
+                <div class="accordion-body">
+                    Our vision is to be a global leader in the fashion industry by offering unique designs, innovative products, and an exceptional shopping experience.
                 </div>
             </div>
-            <div class="col">
-                <div class="card product-card">
-                    <img src="offer 3.jpg" class="card-img-top" alt="Offer 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Exclusive Festival Offers</h5>
-                        <p class="card-text">Celebrate the season with great deals!</p>
-                    </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Why Choose Us
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#aboutAccordion">
+                <div class="accordion-body">
+                    We provide a wide range of fashionable clothing for men, women, and children. With our competitive pricing, exclusive offers, and focus on quality, we stand out in the industry.
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+    <!-- Offers Section -->
+    <!-- Offers Section with Modal -->
+<div class="container mt-5" id="offers">
+    <h2 class="section-title">Special Offers</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card product-card">
+                <img src="offer 1.jpg" class="card-img-top" alt="Offer 1">
+                <div class="card-body">
+                    <h5 class="card-title">Buy 2 Get 1 Free</h5>
+                    <p class="card-text">Grab our amazing offer on selected items!</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#offerModal1">View Details</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card product-card">
+                <img src="offer 2.jpg" class="card-img-top" alt="Offer 2">
+                <div class="card-body">
+                    <h5 class="card-title">Flat 50% Off</h5>
+                    <p class="card-text">Don't miss out on our special discount.</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#offerModal2">View Details</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card product-card">
+                <img src="offer 3.jpg" class="card-img-top" alt="Offer 3">
+                <div class="card-body">
+                    <h5 class="card-title">Exclusive Festival Offers</h5>
+                    <p class="card-text">Celebrate the season with great deals!</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#offerModal3">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<!-- Offer 1 Modal -->
+<div class="modal fade" id="offerModal1" tabindex="-1" aria-labelledby="offerModal1Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="offerModal1Label">Buy 2 Get 1 Free</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Enjoy our special Buy 2 Get 1 Free offer on selected clothing items. Hurry, offer valid while stocks last!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Shop Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Offer 2 Modal -->
+<div class="modal fade" id="offerModal2" tabindex="-1" aria-labelledby="offerModal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="offerModal2Label">Flat 50% Off</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Get flat 50% off on our exclusive range of fashion products. Don’t miss this limited-time deal!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Shop Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Offer 3 Modal -->
+<div class="modal fade" id="offerModal3" tabindex="-1" aria-labelledby="offerModal3Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="offerModal3Label">Exclusive Festival Offers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Celebrate the festive season with amazing discounts and offers. Shop now and make your celebrations even better!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Shop Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- Our Collection -->
     <div class="container mt-5">
@@ -185,6 +312,9 @@
     <script>
         function redirectToPage(page) {
             window.location.href = page;
+        }
+        function redirectToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>

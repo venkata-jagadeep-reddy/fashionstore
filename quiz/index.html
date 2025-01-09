@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .btn {
+            padding: 12px 25px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .question {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .options button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .options button.selected {
+            background-color: #4caf50;
+        }
+        .navigation button {
+            margin: 5px;
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .navigation button:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+        .score {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Page -->
+    <div class="container" id="start-page">
+        <h1>Welcome to the Quiz</h1>
+        <p>Test your knowledge with this fun and interactive quiz.</p>
+        <button class="btn" id="start-quiz">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Page -->
+    <div class="container hidden" id="quiz-container">
+        <div class="question" id="question">Question text</div>
+        <div class="options" id="options"></div>
+        <div class="navigation">
+            <button id="btn-prev">Previous</button>
+            <button id="btn-next">Next</button>
+        </div>
+        <button class="btn" id="btn-submit">Submit Quiz</button>
+        <div class="score hidden" id="score"></div>
+        <button class="btn hidden" id="btn-restart">Restart Quiz</button>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: ["Paris", "London", "Rome", "Berlin"],
+                answer: "Paris",
+                userAnswer: null
+            },
+            {
+                question: "What is 2 + 2?",
+                options: ["3", "4", "5", "6"],
+                answer: "4",
+                userAnswer: null
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+                answer: "Mars",
+                userAnswer: null
+            },
+            {
+                question: "Who wrote 'Hamlet'?",
+                options: ["William Shakespeare", "Mark Twain", "J.K. Rowling", "Ernest Hemingway"],
+                answer: "William Shakespeare",
+                userAnswer: null
+            },
+            {
+                question: "Which is the smallest prime number?",
+                options: ["0", "1", "2", "3"],
+                answer: "2",
+                userAnswer: null
+            }
+        ];
+        let currentQuestionIndex = 0;
+        const startPage = document.getElementById('start-page');
+        const quizContainer = document.getElementById('quiz-container');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const scoreEl = document.getElementById('score');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmit = document.getElementById('btn-submit');
+        const btnRestart = document.getElementById('btn-restart');
+        const startQuizBtn = document.getElementById('start-quiz');
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            optionsEl.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                if (currentQuestion.userAnswer === option) button.classList.add('selected');
+                button.addEventListener('click', () => selectOption(option));
+                optionsEl.appendChild(button);
+            });
+            btnPrev.style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
+            btnNext.style.display = currentQuestionIndex === questions.length - 1 ? 'none' : 'inline-block';
+        }
+        function selectOption(option) {
+            questions[currentQuestionIndex].userAnswer = option;
+            loadQuestion();
+        }
+        function showScore() {
+            const correctAnswers = questions.filter(q => q.userAnswer === q.answer).length;
+            questionEl.style.display = 'none';
+            optionsEl.style.display = 'none';
+            btnPrev.style.display = 'none';
+            btnNext.style.display = 'none';
+            btnSubmit.style.display = 'none';
+            scoreEl.style.display = 'block';
+            scoreEl.textContent = `Your Score: ${correctAnswers} / ${questions.length}`;
+            btnRestart.style.display = 'block';
+        }
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            questions.forEach(q => (q.userAnswer = null));
+            questionEl.style.display = 'block';
+            optionsEl.style.display = 'block';
+            btnSubmit.style.display = 'block';
+            scoreEl.style.display = 'none';
+            btnRestart.style.display = 'none';
+            loadQuestion();
+        }
+        startQuizBtn.addEventListener('click', () => {
+            startPage.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            loadQuestion();
+        });
+        btnPrev.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+        btnNext.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        });
+        btnSubmit.addEventListener('click', showScore);
+        btnRestart.addEventListener('click', restartQuiz);
+    </script>
+</body>
+</html>
